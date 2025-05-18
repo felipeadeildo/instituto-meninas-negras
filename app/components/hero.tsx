@@ -52,7 +52,7 @@ export const Hero = () => {
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20 shadow-xl w-full max-w-md">
               <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden mb-4">
                 <img
-                  src="/api/placeholder/600/400"
+                  src="https://picsum.photos/600/400"
                   alt="Meninas Negras em atividade educacional"
                   className="w-full h-full object-cover"
                 />

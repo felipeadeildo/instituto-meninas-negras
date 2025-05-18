@@ -41,9 +41,9 @@ export const QuemSomos = () => {
           >
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
               <img
-                src="/api/placeholder/600/450"
-                alt="Jovens participantes do Instituto Meninas Negras"
-                className="w-full h-auto"
+              src="https://picsum.photos/600/400"
+              alt="Jovens participantes do Instituto Meninas Negras"
+              className="w-full h-auto"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-purple-600 rounded-lg z-0"></div>
