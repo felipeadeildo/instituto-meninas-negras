@@ -1,3 +1,20 @@
+import { motion } from "framer-motion"
+
+import { AnimatePresence } from "motion/react"
+import { useEffect, useState } from "react"
+import { ContatoApoio } from "~/components/contato-apoio"
+import { CTA } from "~/components/cta"
+import { Estatisticas } from "~/components/estatisticas"
+import { Footer } from "~/components/footer"
+import { Hero } from "~/components/hero"
+import { ImpactosCases } from "~/components/impactos-cases"
+import { Navbar } from "~/components/navbar"
+import { ODSFuturo } from "~/components/ods-futuro"
+import { Parceiros } from "~/components/parceiros"
+import { PublicoAtuacao } from "~/components/publico-atuacao"
+import { QuemSomos } from "~/components/quem-somos"
+import { SplashScreen } from "~/components/splash-screen"
+import { VisaoValores } from "~/components/visao-valores"
 import type { Route } from "./+types/home"
 
 export function meta({}: Route.MetaArgs) {
@@ -7,18 +24,45 @@ export function meta({}: Route.MetaArgs) {
   ]
 }
 
-export function loader({ context }: Route.LoaderArgs) {
-  return { message: "Hello from Vercel" }
-}
+export default function Home() {
+  const [loading, setLoading] = useState(true)
 
-export default function Home({ loaderData }: Route.ComponentProps) {
+  useEffect(() => {
+    // Simula um tempo de carregamento
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold">Home Page</h1>
-      <p className="mt-2 p-4 bg-yellow-100 border-l-4 border-yellow-500">
-        Esta página está em desenvolvimento.
-      </p>
-      <pre className="mt-4 p-2 bg-gray-100 rounded">{JSON.stringify(loaderData, null, 2)}</pre>
-    </div>
+    <AnimatePresence mode="wait">
+      {loading ? (
+        <SplashScreen key="splash" />
+      ) : (
+        <motion.div
+          key="app"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="min-h-screen bg-white"
+        >
+          <Navbar />
+          <Hero />
+          <QuemSomos />
+          <VisaoValores />
+          <PublicoAtuacao />
+          <Estatisticas />
+          <ImpactosCases />
+          <ODSFuturo />
+          <Parceiros />
+          <CTA />
+          <ContatoApoio />
+          <Footer />
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
